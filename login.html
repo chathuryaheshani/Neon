@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link rel="shortcut icon" type="image/png" href="/imgs/favicon.png" /> -->
+        <title>Login</title>
+
+        <!-- inject:css -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="bower_components/simple-line-icons/css/simple-line-icons.css">
+        <link rel="stylesheet" href="bower_components/weather-icons/css/weather-icons.min.css">
+        <link rel="stylesheet" href="bower_components/themify-icons/css/themify-icons.css">
+        <!-- endinject -->
+
+        <!-- Main Style  -->
+        <link rel="stylesheet" href="dist/css/main.css">
+
+        <script src="assets/js/modernizr-custom.js"></script>
+    </head>
+    <body>
+
+        <div class="sign-in-wrapper">
+            <div class="sign-container">
+                <div class="text-center">
+                    <h2 class="logo"><img src="imgs/icon.png" width="130px" alt=""/></h2>
+                    <h4>Login to Transport Map Provider System</h4>
+                </div>
+
+                <div class="form-group">
+                        <input type="text" class="form-control" placeholder="User name" required="" id="uName">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password" required="" id="passwd">
+                    </div>
+                    <div class="form-group text-center">
+                        <label class="i-checks">
+                            <input type="checkbox">
+                            <i></i>
+                        </label>
+                        Remember me
+                    </div>
+                    <button type="submit" class="btn btn-info btn-block" id="login">Login</button>
+                    <div class="text-center help-block">
+                        <a href="forgot-password.html"><small>Forgot password?</small></a>
+                    </div>
+                    <a class="btn btn-md btn-default btn-block" href="registration.html">Create an account</a>
+                <div class="text-center copyright-txt">
+                    <small>Group Neon</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- inject:js -->
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="bower_components/jquery.nicescroll/dist/jquery.nicescroll.min.js"></script>
+        <script src="bower_components/autosize/dist/autosize.min.js"></script>
+        <!-- endinject -->
+
+        <!-- Common Script   -->
+        <script src="dist/js/main.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
+<script>
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyDonZLh2UyVqSMaf_Zz0lqG3GW6mGe2YcM",
+    authDomain: "transportsystem-a45e8.firebaseapp.com",
+    databaseURL: "https://transportsystem-a45e8.firebaseio.com",
+    projectId: "transportsystem-a45e8",
+    storageBucket: "transportsystem-a45e8.appspot.com",
+    messagingSenderId: "864987739234"
+  };
+  firebase.initializeApp(config);
+
+ // Initialize Cloud Firestore through Firebase
+var db = firebase.firestore();
+
+// Disable deprecated features
+db.settings({
+  timestampsInSnapshots: true
+});
+
+//sign in here
+document.getElementById("login").onclick = function(){
+    var email = document.getElementById("uName").value;
+    var password = document.getElementById("passwd").value;
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(res => {   
+            console.log(res);
+            window.location.replace("http://localhost/16/perfomance.html")
+    })
+    .catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error;
+  var errorMessage = error.message;
+  console.log("errorCode =" + errorCode);
+  console.log(errorMessage);
+});
+
+localStorage.setItem("email",email);
+}
+</script>
+
+    </body>
+
+<!-- Mirrored from megadin.lab.themebucket.net/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Sep 2017 13:41:25 GMT -->
+</html>

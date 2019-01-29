@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset ="UTF-8">
+        <meta http-equiv="x-ua-compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,
+        initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content ="ie=edge">
+        <title>
+            Google Map
+        </title>
+        <style>
+        #map{
+            height: 800px;
+            width:100%;
+        }
+        #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+        </style>
+    </head>
+    <body>
+       
+<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+        <div id="map">
+        </div>
+        <script>
+        function initMap(){
+            //those are the map options
+            var options = {
+               zoom:8,
+               center: { lat:7.8731,lng:80.7718}
+               }
+             var map = new google.maps.Map(document.getElementById('map'),options);
+           //add a marker
+           var marker = new google.map.Marker({
+               position:{lat:6.9271 ,lng:79.8612},
+               map :map
+           });
+        }
+        </script>
+            <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBueopmUrCdV7kB_H4oOXXIiO7fGtVLKLI&callback=initMap">
+            </script>
+    </body>
+    </html>

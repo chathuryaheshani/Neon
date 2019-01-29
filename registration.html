@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from megadin.lab.themebucket.net/registration.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Sep 2017 13:41:25 GMT -->
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link rel="shortcut icon" type="image/png" href="/imgs/favicon.png" /> -->
+        <title>Registration - MegaDin</title>
+
+        <!-- inject:css -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="bower_components/simple-line-icons/css/simple-line-icons.css">
+        <link rel="stylesheet" href="bower_components/weather-icons/css/weather-icons.min.css">
+        <link rel="stylesheet" href="bower_components/themify-icons/css/themify-icons.css">
+        <!-- endinject -->
+
+        <!-- Main Style  -->
+        <link rel="stylesheet" href="dist/css/main.css">
+
+        <script src="assets/js/modernizr-custom.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> 
+       
+    </head>
+    <body>
+            <div class="header">
+                    <h1>Neon-Uom</h1>
+                  </div>    
+        <div class="sign-in-wrapper">
+                 
+            <div class="sign-container">
+                <div class="text-center">
+                    <h2 class="logo"><img src="imgs/icon.png" width="130px" alt=""/></h2>
+                    <h4>Register</h4>
+                </div>
+
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="uName"  placeholder="Email" required="">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="passwd"  placeholder="Password" required="">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Confirm Password" required="">
+                    </div>
+                    <div class="form-group text-center">
+                        <label class="i-checks">
+                            <input type="checkbox">
+                            <i></i>
+                        </label>
+                          Agree the terms and policy
+                    </div>
+                    <input type="submit" class="btn btn-info btn-block" id="signup" value="Register">
+                    <p class="text-muted text-center help-block"><small>Already have an account?</small></p>
+                    <a class="btn btn-md btn-default btn-block" href="login.html">Login</a>
+                <div class="text-center copyright-txt">
+                    <small>Group Neon</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- inject:js -->
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="bower_components/jquery.nicescroll/dist/jquery.nicescroll.min.js"></script>
+        <script src="bower_components/autosize/dist/autosize.min.js"></script>
+        <!-- endinject -->
+
+        <!-- Common Script   -->
+        <script src="dist/js/main.js"></script>
+        
+
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
+<script>
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyDonZLh2UyVqSMaf_Zz0lqG3GW6mGe2YcM",
+    authDomain: "transportsystem-a45e8.firebaseapp.com",
+    databaseURL: "https://transportsystem-a45e8.firebaseio.com",
+    projectId: "transportsystem-a45e8",
+    storageBucket: "transportsystem-a45e8.appspot.com",
+    messagingSenderId: "864987739234"
+  };
+  firebase.initializeApp(config);
+
+ // Initialize Cloud Firestore through Firebase
+var db = firebase.firestore();
+
+// Disable deprecated features
+db.settings({
+  timestampsInSnapshots: true
+});
+
+// signup is here
+document.getElementById("signup").onclick = function(){
+    var email = document.getElementById("uName").value;
+    var password = document.getElementById("passwd").value;
+
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  console.log(errorCode);
+  console.log(errorMessage);
+});
+console.log("Done");
+window.location.replace("http://localhost/16/perfomance.html")
+}
+</script>
+
+
+    </body>
+
+<!-- Mirrored from megadin.lab.themebucket.net/registration.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Sep 2017 13:41:25 GMT -->
+</html>
